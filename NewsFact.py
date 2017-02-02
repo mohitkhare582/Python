@@ -12,8 +12,8 @@ def news_site():
     clear()
     site_list = {}
     top_terms = 7
-    all_code = requests.get(link).text
-    soup_ob = BeautifulSoup(all_code, 'html.parser')
+    all_code = requests.get(link)
+    soup_ob = BeautifulSoup(all_code,"html.parser")
     for websites in soup_ob.find_all('a', {'rel': 'nofollow'}):
         site_list[(websites.get('href'))] = websites.string
     for news_websites, name in site_list.items():
@@ -59,3 +59,5 @@ def show_facts(facts, top_terms):
 
 
 news_site()
+
+
